@@ -1,0 +1,124 @@
+
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:+'
+    }
+}
+
+apply plugin: 'org.akhikhl.gretty'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+
+version '1.0-SNAPSHOT'
+group 'src/main/java/com/ssbsoft/library_mvc'
+
+sourceCompatibility = 1.8
+
+
+repositories {
+    mavenCentral()
+}
+
+//plugins {
+//    id "java"
+//    id "org.flywaydb.flyway" version "4.2.0"
+//}
+//repositories {
+//    mavenCentral()
+//    mavenLocal()
+//}
+//buildscript {
+//    dependencies {
+//        classpath 'com.h2database:h2:1.4.197'
+//    }
+//}
+
+//plugins {
+//    id "org.flywaydb.flyway" version "7.1.1"
+//}
+//
+//flyway {
+//    url = 'jdbc:mysql://localhost:3306/flyway_test'
+//    user = 'root'
+//    password = 'root'
+//}
+
+
+
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '7.0.4'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.0.6.RELEASE'
+
+    compile group: 'javax.mail', name: 'mail', version: '1.4.7'
+    compile group: 'org.springframework', name: 'spring-context-support', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-core', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.0.6.RELEASE'
+
+    compile group: 'antlr', name: 'antlr', version: '2.7.7'
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2.1'
+    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.11.Final'
+    compile group: 'javassist', name: 'javassist', version: '3.12.1.GA'
+    compile group: 'org.eclipse.persistence', name: 'javax.persistence', version: '2.1.0'
+    compile group: 'org.jboss.logging', name: 'jboss-logging', version: '3.1.1.GA'
+    compile group: 'javax.transaction', name: 'jta', version: '1.1'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.2'
+    compile group: 'taglibs', name: 'standard', version: '1.0'
+
+    compileOnly 'javax.servlet.jsp:jsp-api:2.1'
+    compileOnly 'javax.servlet:jstl:1.2'
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+
+    //servlet and jstl
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.2'
+    /*runtime group: 'com.twilio.sdk', name: 'twilio', version: '7.1.0'*/
+
+}
+
+//flyway {
+//    url = 'jdbc:mysql://localhost:3306/flyway_test'
+//    driver = 'com.mysql.cj.jdbc.Driver'
+//    user = {root}
+//    password = {root}
+//    table = 'schema_version'
+//    baselineOnMigrate=true
+//}
+
+gretty {
+    contextPath          = '/'
+    loggingLevel         = 'ERROR'
+    servletContainer     = 'tomcat8'
+    fileLogEnabled       = false
+    fastReload           = true
+    managedClassReload   = true
+    reloadOnLibChange    = true
+    reloadOnConfigChange = true
+    jacocoEnabled        = false
+    reloadOnClassChange  = false
+}
